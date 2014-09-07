@@ -1,0 +1,67 @@
+package serHomework;
+
+ class Human implements Cloneable {
+       private String name;
+       private int age;
+       private String occupation;     
+       
+       public String getName() {
+             return name;
+       }
+       public void setName(String name) {
+             this.name = name;
+       }
+       public int getAge() {
+             return age;
+       }
+       public void setAge(int age) {
+             this.age = age;
+       }
+      
+       public Human clone() throws CloneNotSupportedException {
+             return (Human)super.clone();
+       }
+       public void setOccupation(String occupation){
+    	   this.occupation = occupation;
+       }
+       public String getOccupation(String occupation){
+    	   return occupation;
+       }       
+       
+       public void printInfo(){
+    	   System.out.println(getName());
+    	   System.out.println(getAge());
+    	   System.out.println(getOccupation(occupation));
+       	   System.out.println(hashCode()+"\n");
+       }
+       
+}
+
+public class App {
+
+       public static void main(String[] args) {
+    	           
+    	             Human human1 = new Human();
+    	             human1.setName("Jerry");
+     	             human1.setAge(25);
+    	             human1.setOccupation("interpreter");
+      	           
+    	             Human human2 = new Human();
+    	             human2.setName("Tom");
+     	             human2.setAge(15);
+    	             human2.setOccupation("artist");
+    	           
+    	             Human clone;
+    	            try {
+    	                   clone = human1.clone();
+            	           System.out.println("Human1 equals clone: "+clone.equals(human1));
+                           clone.printInfo();
+  	                  
+    	            } catch (CloneNotSupportedException e) {
+    	                   System.out.println("Объект не может быть клонированным.");
+    	            }
+    	            System.out.println("Human1 equals human2: "+human1.equals(human2));
+    	            human1.printInfo();
+    	            human2.printInfo();
+    	      }
+} 
